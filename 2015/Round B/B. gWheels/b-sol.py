@@ -1,6 +1,7 @@
 T = int(input())
 for x in range(1, T+1):
-    print("Case #{}:"format(x))
+    _ = input() # skip empty line
+    print("Case #{}:".format(x))
     # the numbers of gears on the pedals, extra, and tire groups
     np, ne, nt = map(int, input().split())
 
@@ -11,10 +12,17 @@ for x in range(1, T+1):
     n_teeth_tire = [int(s) for s in input().split()]
 
     m = int(input())    # number of questions
-    p, q = [], []
     for _ in range(m):
-        p_, q_ = map(int, input().split())
-        p.append(p_)
-        q.append(q_)
-
-    
+        # p/q = pedals/extra1 * extra2/tire
+        p, q = map(int, input().split())
+        possible = 'No'
+        for pedal in n_teeth_pedal:
+            for extra1 in n_teeth_extra:
+                for extra2 in n_teeth_extra:
+                    if extra1 != extra2:
+                        for tire in n_teeth_tire:
+                            if p/q == pedal/extra1 * extra2/tire:
+                                print('pedal', pedal, 'extra1', extra1, 'extra2', extra2, 'tire', tire)
+                                possible = 'Yes'
+        print(possible)
+    # print('')
