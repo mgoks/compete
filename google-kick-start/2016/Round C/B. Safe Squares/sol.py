@@ -25,3 +25,9 @@ for t in range(1, int(input()) + 1):
                 if not has_monster(G, a, ur, lc):
                     n += 1
     print('Case #{}: {}'.format(t, n))
+
+'''
+LARGE
+Scan grid a = min(R,C) to 1
+If a submatrix found that does not contain any monsters find how many submatrices
+it has (n) and add that number to the count
